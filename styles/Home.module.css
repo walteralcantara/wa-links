@@ -1,7 +1,6 @@
 .container {
   margin: 0 auto;
   max-width: 960px;
-  height: 100vh;
 
   background: #fafafa;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -101,11 +100,17 @@
 /* FOOTER */
 .footer {
   width: 100%;
-  bottom: 0;
-  position: fixed;
-  margin-bottom: 1rem;
 }
 
 .footer p {
+  padding-top: 4rem;
   text-align: center;
+}
+
+/* RESPONSIVENESS */
+
+@media (max-width: 768px) {
+  .container {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
 }
