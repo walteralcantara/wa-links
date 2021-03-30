@@ -1,12 +1,61 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 
+import { motion } from 'framer-motion';
+
+const firstItem = {
+  hidden: {
+    y: -100,
+    scale: 0.1,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    scale: 1,
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+    },
+  },
+};
+
+const secondItem = {
+  hidden: { y: -50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.8,
+      duration: 0.5,
+    },
+  },
+  liHovering: {
+    scale: 1.2,
+    rotate: [0, 5, -5, 0],
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+
+const thirdItem = {
+  hidden: { y: -50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 1.2,
+      duration: 0.5,
+    },
+  },
+};
+
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Walter Links</title>
+        <link rel="icon" href="/faviconXXX.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap"
@@ -15,17 +64,42 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <section className={styles.aboutMe}>
-          <img src="photo.jpg" alt="Walter Alcantara" />
-          <h1>Walter Alcantara</h1>
-          <a href="mailto:waltermalcantara@gmail.com">
-            waltermalcantara@gmail.com
-          </a>
-        </section>
+        {/* first-item */}
+        <motion.div initial="hidden" animate="visible" variants={firstItem}>
+          <section className={styles.aboutMe}>
+            <motion.img
+              src="photo.jpg"
+              alt="Walter Alcantara"
+              whileHover={{
+                rotate: 360,
+                transition: {
+                  duration: 1,
+                  ease: 'easeInOut',
+                },
+              }}
+            />
+            <motion.h1
+              whileHover={{
+                scale: 1.2,
+              }}
+            >
+              Walter Alcantara
+            </motion.h1>
+            <a href="mailto:waltermalcantara@gmail.com">
+              waltermalcantara@gmail.com
+            </a>
+          </section>
+        </motion.div>
 
-        <nav className={styles.navLinks}>
+        {/* second-item */}
+        <motion.nav
+          className={styles.navLinks}
+          initial="hidden"
+          animate="visible"
+          variants={secondItem}
+        >
           <ul>
-            <li>
+            <motion.li whileHover={secondItem.liHovering}>
               <a href="https://github.com/wmalcantara" target="_blank">
                 <svg viewBox="0 0 40 40">
                   <path
@@ -35,8 +109,8 @@ export default function Home() {
                 </svg>
                 GitHub
               </a>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li whileHover={secondItem.liHovering}>
               <a
                 href="https://www.linkedin.com/in/walteralcantara"
                 target="_blank"
@@ -49,8 +123,8 @@ export default function Home() {
                 </svg>
                 LinkedIn
               </a>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li whileHover={secondItem.liHovering}>
               <a href="https://walteralcantara.vercel.app" target="_blank">
                 <svg viewBox="0 0 40 40">
                   <path
@@ -60,13 +134,19 @@ export default function Home() {
                 </svg>
                 WebSite
               </a>
-            </li>
+            </motion.li>
           </ul>
-        </nav>
+        </motion.nav>
 
-        <footer className={styles.footer}>
+        {/* third-item */}
+        <motion.footer
+          className={styles.footer}
+          initial="hidden"
+          animate="visible"
+          variants={thirdItem}
+        >
           <p>Criado com ❤️ por Walter Alcantara</p>
-        </footer>
+        </motion.footer>
       </main>
     </div>
   );
