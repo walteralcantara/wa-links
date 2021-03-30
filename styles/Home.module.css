@@ -4,6 +4,7 @@
   height: 100vh;
 
   background: #fafafa;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .main {
@@ -43,6 +44,7 @@
 }
 
 .navLinks ul {
+  padding: 0;
   list-style: none;
 }
 
@@ -62,7 +64,7 @@
   letter-spacing: 0.4rem;
   font-weight: 700;
   color: #00c2ff;
-  border-radius: 3px;
+
   border: 2px solid #00c2ff;
 
   transition: 0.3s ease;
@@ -85,6 +87,15 @@
 
 .navLinks a:hover svg path {
   fill: #fff;
+}
+
+/* TECHNOLOGIES USED */
+.technologiesUsed {
+  margin-top: 4rem;
+}
+
+.technologiesUsed a + a {
+  margin-left: 1rem;
 }
 
 /* FOOTER */

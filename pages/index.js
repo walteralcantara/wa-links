@@ -48,14 +48,33 @@ const thirdItem = {
       duration: 0.5,
     },
   },
+  imgHovering: {
+    scale: 1.1,
+    y: -5,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+
+const fourthItem = {
+  hidden: { y: -50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 1.4,
+      duration: 0.5,
+    },
+  },
 };
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Walter Links</title>
-        <link rel="icon" href="/faviconXXX.ico" />
+        <title>Walter | Links</title>
+        <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap"
@@ -71,10 +90,9 @@ export default function Home() {
               src="photo.jpg"
               alt="Walter Alcantara"
               whileHover={{
-                rotate: 360,
+                rotate: [0, 10, -10, 0],
                 transition: {
                   duration: 1,
-                  ease: 'easeInOut',
                 },
               }}
             />
@@ -139,11 +157,43 @@ export default function Home() {
         </motion.nav>
 
         {/* third-item */}
+        <motion.section
+          className={styles.technologiesUsed}
+          initial="hidden"
+          animate="visible"
+          variants={thirdItem}
+        >
+          <a href="https://framer.com/motion/">
+            <motion.img
+              src="framer-motion.png"
+              alt="Framer Motion"
+              whileHover={thirdItem.imgHovering}
+            />
+          </a>
+
+          <a href="https://reactjs.org">
+            <motion.img
+              src="react-js.png"
+              alt="React.JS"
+              whileHover={thirdItem.imgHovering}
+            />
+          </a>
+
+          <a href="https://nextjs.org">
+            <motion.img
+              src="next-js.png"
+              alt="Next.JS"
+              whileHover={thirdItem.imgHovering}
+            />
+          </a>
+        </motion.section>
+
+        {/* fourth-item */}
         <motion.footer
           className={styles.footer}
           initial="hidden"
           animate="visible"
-          variants={thirdItem}
+          variants={fourthItem}
         >
           <p>Criado com ❤️ por Walter Alcantara</p>
         </motion.footer>
